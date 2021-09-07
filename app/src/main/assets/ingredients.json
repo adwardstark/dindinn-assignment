@@ -1,0 +1,19 @@
+{
+  "status": {
+    "success": true,
+    "statusCode": 200,
+    "message": "success"
+  },
+  "data": [
+    {
+      "id": 1,
+      "title": "Apple Juice",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "title": "Chicken Noodle",
+      "quantity": 4
+    }
+  ]
+}
