@@ -4,4 +4,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dd_mini">DD Mini</string>
     <string name="ingredients_text">Ingredients</string>
+    <string name="auto_reject_txt">Auto reject</string>
+    <string name="accept_txt">Accept</string>
+    <string name="order_id_txt">#%d</string>
+    <string name="quantity_txt">x%d</string>
+    <string name="ordered_at_txt">at %s</string>
+    <string name="addons_txt">#Addons</string>
+    <plurals name="total_items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
 </resources>
