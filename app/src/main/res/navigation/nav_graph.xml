@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/orderListFragment">
+
+    <fragment
+        android:id="@+id/orderListFragment"
+        android:name="com.adwardstark.dd_mini_assignment.ui.fragments.OrderListFragment"
+        android:label="fragment_order_list"
+        tools:layout="@layout/fragment_order_list" >
+        <action
+            android:id="@+id/action_orderListFragment_to_ingredientListFragment"
+            app:destination="@id/ingredientListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientListFragment"
+        android:name="com.adwardstark.dd_mini_assignment.ui.fragments.IngredientListFragment"
+        android:label="fragment_ingredient_list"
+        tools:layout="@layout/fragment_ingredient_list" />
+</navigation>
