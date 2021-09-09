@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.adwardstark.dd_mini_assignment.databinding.FragmentIngredientListBinding
-import com.adwardstark.dd_mini_assignment.ui.showHomeUp
+import com.adwardstark.dd_mini_assignment.utils.showHomeUp
 
 /**
  * Created by Aditya Awasthi on 08/09/21.

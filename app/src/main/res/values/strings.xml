@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">DD_Mini_Assignment</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dd_mini">DD Mini</string>
     <string name="ingredients_text">Ingredients</string>
     <string name="auto_reject_txt">Auto reject</string>
@@ -10,6 +8,7 @@
     <string name="quantity_txt">x%d</string>
     <string name="ordered_at_txt">at %s</string>
     <string name="addons_txt">#Addons</string>
+    <string name="expired_txt">Expired</string>
     <plurals name="total_items">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

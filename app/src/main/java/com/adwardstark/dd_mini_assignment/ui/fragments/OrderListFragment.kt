@@ -2,7 +2,6 @@ package com.adwardstark.dd_mini_assignment.ui.fragments
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -12,8 +11,8 @@ import com.adwardstark.dd_mini_assignment.R
 import com.adwardstark.dd_mini_assignment.databinding.FragmentOrderListBinding
 import com.adwardstark.dd_mini_assignment.ui.OrderServiceViewModel
 import com.adwardstark.dd_mini_assignment.ui.adapters.OrderListAdapter
-import com.adwardstark.dd_mini_assignment.ui.showHomeUp
-import com.adwardstark.dd_mini_assignment.ui.showToast
+import com.adwardstark.dd_mini_assignment.utils.showHomeUp
+import com.adwardstark.dd_mini_assignment.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -55,6 +54,10 @@ class OrderListFragment : Fragment() {
             orderServiceViewModel.getOrders()
         }
 
+        orderListAdapter.onItemClicked { (id) ->
+            orderListAdapter.newList(orderListAdapter.currentList().filter { it.id != id })
+        }
+
         orderServiceViewModel.orderList.observe(viewLifecycleOwner) {
             viewBinder.swipeRefreshLayout.isRefreshing = false
             if(it.isNotEmpty()) {
@@ -64,5 +67,10 @@ class OrderListFragment : Fragment() {
             }
         }
         orderServiceViewModel.getOrders()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        orderListAdapter.removeCallbacks()
     }
 }

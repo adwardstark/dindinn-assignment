@@ -28,10 +28,6 @@ class OrderServiceViewModel @Inject constructor(
         private val TAG = OrderServiceViewModel::class.java.simpleName
     }
 
-    init {
-        Log.d(TAG, "Using service: $orderService")
-    }
-
     private var _orderList = MutableLiveData<List<OrderDetail>>()
     val orderList: LiveData<List<OrderDetail>>
         get() = _orderList
