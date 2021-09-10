@@ -13,13 +13,19 @@
           "id": 1,
           "title": "Fried Rice",
           "quantity": 4,
-          "image": "https://b.zmtcdn.com/data/pictures/chains/1/171/0094c2b5485c4c2f52c931306442269b_o2_featured_v2.jpg?output-format=webp"
+          "image": "https://b.zmtcdn.com/data/pictures/chains/2/308212/2d536d0603e5b8d046e4c6ec8217c161_o2_featured_v2.jpg?output-format=webp"
         },
         {
           "id": 2,
           "title": "Chicken Katsu",
           "quantity": 15,
           "image": "https://b.zmtcdn.com/data/pictures/chains/2/308212/2d536d0603e5b8d046e4c6ec8217c161_o2_featured_v2.jpg?output-format=webp"
+        },
+        {
+          "id": 3,
+          "title": "Burger & Drinks",
+          "quantity": 10,
+          "image": "https://b.zmtcdn.com/data/pictures/chains/1/171/0094c2b5485c4c2f52c931306442269b_o2_featured_v2.jpg?output-format=webp"
         }
       ]
     },

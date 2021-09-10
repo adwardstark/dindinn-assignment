@@ -45,13 +45,18 @@
         android:text="@string/auto_reject_txt"
         android:textSize="20sp" />
 
-    <ProgressBar
+    <com.adwardstark.dd_mini_assignment.ui.customview.ProgressStepBar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="5dp"
         android:layout_below="@id/timeLeftTxt"
         android:id="@+id/progressBar"
         android:layout_marginTop="10dp"
-        android:indeterminate="true"
+        app:stepKeepMargin="true"
+        app:stepMargin="6dp"
+        app:max="5"
+        app:step="3"
+        app:stepDoneColor="#dedede"
+        app:stepUndoneColor="#ff0000"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@id/autoRejectTxt"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
