@@ -9,6 +9,9 @@
     <string name="ordered_at_txt">at %s</string>
     <string name="addons_txt">#Addons</string>
     <string name="expired_txt">Expired</string>
+    <string name="search_txt">Search</string>
+    <string name="ingredient_image">Ingredient Image</string>
+    <string name="available_txt">Available</string>
     <plurals name="total_items">
         <item quantity="one">%d item</item>
         <item quantity="other">%d items</item>

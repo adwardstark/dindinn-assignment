@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.adwardstark.dd_mini_assignment.data.IngredientCategory
+import com.adwardstark.dd_mini_assignment.data.IngredientResponse
 import com.adwardstark.dd_mini_assignment.data.OrderDetail
 import com.adwardstark.dd_mini_assignment.data.OrdersResponse
 import com.adwardstark.dd_mini_assignment.network.OrderService
@@ -32,11 +34,22 @@ class OrderServiceViewModel @Inject constructor(
     val orderList: LiveData<List<OrderDetail>>
         get() = _orderList
 
+    private var _ingredientList = MutableLiveData<List<IngredientCategory>>()
+    val ingredientList: LiveData<List<IngredientCategory>>
+        get() = _ingredientList
+
     fun getOrders() {
         orderService.getOrders()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getOrderListObserver())
+    }
+
+    fun getIngredients() {
+        orderService.getIngredient()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(getIngredientListObserver())
     }
 
     private fun getOrderListObserver(): Observer<OrdersResponse> {
@@ -45,8 +58,26 @@ class OrderServiceViewModel @Inject constructor(
                 // Do nothing
             }
             override fun onNext(t: OrdersResponse) {
-                Log.d(TAG, "->onNext() $t")
+                Log.d(TAG, "->getOrderListObserver() onNext: $t")
                 _orderList.postValue(t.data)
+            }
+            override fun onError(e: Throwable) {
+                Log.d(TAG, "->onError() ${e.message}")
+            }
+            override fun onComplete() {
+                // Do nothing
+            }
+        }
+    }
+
+    private fun getIngredientListObserver(): Observer<IngredientResponse> {
+        return object :Observer<IngredientResponse> {
+            override fun onSubscribe(d: Disposable) {
+                // Do nothing
+            }
+            override fun onNext(t: IngredientResponse) {
+                Log.d(TAG, "->getIngredientListObserver() onNext: $t")
+                _ingredientList.postValue(t.data)
             }
             override fun onError(e: Throwable) {
                 Log.d(TAG, "->onError() ${e.message}")

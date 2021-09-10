@@ -7,7 +7,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -16,7 +17,6 @@
             android:background="?attr/colorOnPrimary"
             app:titleTextColor="?attr/colorOnSecondary"
             app:navigationIconTint="?attr/colorOnSecondary"
-            android:elevation="5dp"
             app:title="@string/dd_mini"
             app:menu="@menu/toolbar_menu"
             style="@style/Widget.MaterialComponents.Toolbar.Primary" />

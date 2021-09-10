@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <item name="searchIcon">@drawable/ic_search_dark</item>
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@null</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="searchHintIcon">@drawable/ic_search_dark</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+        <item name="queryHint">Search for an item</item>
+        <item name="hintTextColor">@color/dark_grey</item>
+    </style>
+</resources>

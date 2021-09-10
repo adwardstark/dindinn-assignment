@@ -18,5 +18,5 @@ interface MockedOrderService: OrderService {
 
     @Mock
     @MockResponse(body = "ingredients.json")
-    override fun searchIngredient(query: String): Observable<IngredientResponse>
+    override fun getIngredient(): Observable<IngredientResponse>
 }

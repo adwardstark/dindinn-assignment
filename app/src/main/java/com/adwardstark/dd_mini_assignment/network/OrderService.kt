@@ -16,5 +16,5 @@ interface OrderService {
     fun getOrders(): Observable<OrdersResponse>
 
     @GET("search")
-    fun searchIngredient(@Query("q") query: String): Observable<IngredientResponse>
+    fun getIngredient(): Observable<IngredientResponse>
 }
