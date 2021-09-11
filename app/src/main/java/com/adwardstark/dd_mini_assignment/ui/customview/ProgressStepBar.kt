@@ -24,37 +24,37 @@ class ProgressStepBar @JvmOverloads constructor(
 
     private var needInitial = true
 
-    private var max: Int = DEFAULT_MAX
+    var max: Int = DEFAULT_MAX
         set(value) {
             field = value
             makeStepView()
         }
 
-    private var step: Int = DEFAULT_STEP
+    var step: Int = DEFAULT_STEP
         set(value) {
             field = value
             makeStepView()
         }
 
-    private var stepDoneColor = Color.BLUE
+    var stepDoneColor = Color.BLUE
         set(value) {
             field = value
             makeStepView()
         }
 
-    private var stepUndoneColor = Color.LTGRAY
+    var stepUndoneColor = Color.LTGRAY
         set(value) {
             field = value
             makeStepView()
         }
 
-    private var stepMargin = resources.getDimensionPixelSize(R.dimen.step_progressbar_default_margin)
+    var stepMargin = resources.getDimensionPixelSize(R.dimen.step_progressbar_default_margin)
         set(value) {
             field = value
             makeStepView()
         }
 
-    private var preserveStepMargin = false
+    var preserveStepMargin = false
         set(value) {
             field = value
             makeStepView()
@@ -132,14 +132,14 @@ class ProgressStepBar @JvmOverloads constructor(
 
     private fun addDoneView(doneViewWidth: Int, height: Int) {
         addView(View(context).apply {
-            layoutParams = LayoutParams(doneViewWidth, height)
+            layoutParams = LayoutParams(doneViewWidth, height - 20 )
             setBackgroundColor(stepDoneColor)
         })
     }
 
     private fun addUndoneView(stepItemWidth: Int, height: Int) {
         addView(View(context).apply {
-            layoutParams = LayoutParams(stepItemWidth, height)
+            layoutParams = LayoutParams(stepItemWidth, height - 20)
                 .apply { leftMargin = stepMargin }
             setBackgroundColor(stepUndoneColor)
         })
@@ -147,7 +147,7 @@ class ProgressStepBar @JvmOverloads constructor(
 
     private fun addDoneViewMargin(doneViewWidth: Int, height: Int) {
         addView(View(context).apply {
-            layoutParams = LayoutParams(doneViewWidth, height)
+            layoutParams = LayoutParams(doneViewWidth, height - 20)
                 .apply { leftMargin = stepMargin }
             setBackgroundColor(stepDoneColor)
         })

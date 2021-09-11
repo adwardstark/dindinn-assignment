@@ -69,6 +69,11 @@ class OrderListFragment : Fragment() {
         orderServiceViewModel.getOrders()
     }
 
+    override fun onPause() {
+        super.onPause()
+        orderListAdapter.removeCallbacks()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         orderListAdapter.removeCallbacks()

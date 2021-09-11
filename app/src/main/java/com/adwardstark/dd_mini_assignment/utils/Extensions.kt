@@ -32,8 +32,15 @@ fun getTimeFrom(timestamp: String): String {
 fun getExpiryAndAlertTime(expiryTimestamp: String, alertTimestamp: String)
         : Pair<Long, Long> {
     val sdf = SimpleDateFormat(DATE_FORMAT, Locale.US)
-    val expiryTime = sdf.parse(expiryTimestamp)!!.time
-    val alertTime = sdf.parse(alertTimestamp)!!.time
+    val expiryTime: Long
+    val alertTime: Long
+    try {
+        expiryTime = sdf.parse(expiryTimestamp)!!.time
+        alertTime = sdf.parse(alertTimestamp)!!.time
+    } catch (e: Throwable) {
+        e.printStackTrace()
+        return Pair(0,0)
+    }
     val nowTime = Date().time
 
     val timeRemExpiryMin = (expiryTime - nowTime)

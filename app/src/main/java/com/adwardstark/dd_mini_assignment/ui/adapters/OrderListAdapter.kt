@@ -62,7 +62,8 @@ class OrderListAdapter: RecyclerView.Adapter<OrderListAdapter.OrderItemViewHolde
     inner class OrderItemViewHolder(private val viewBinder: LayoutOrderItemBinding)
         : RecyclerView.ViewHolder(viewBinder.root) {
 
-        private var countDownRunnable: CountDownRunnable = CountDownRunnable(recyclerHandler)
+        private var countDownRunnable: CountDownRunnable =
+            CountDownRunnable(itemView.context, recyclerHandler)
 
         internal fun bind(orderDetail: OrderDetail) {
             recyclerHandler.removeCallbacks(countDownRunnable)
@@ -72,8 +73,8 @@ class OrderListAdapter: RecyclerView.Adapter<OrderListAdapter.OrderItemViewHolde
                 viewBinder.timeLeftTxt.visibility = View.VISIBLE
                 viewBinder.acceptOrderButton.text = itemView.context.getString(R.string.accept_txt)
 
-                countDownRunnable.setViews(viewBinder.timeLeftTxt,
-                    viewBinder.autoRejectTxt, viewBinder.acceptOrderButton)
+                countDownRunnable.setViews(viewBinder.timeLeftTxt, viewBinder.autoRejectTxt,
+                    viewBinder.acceptOrderButton, viewBinder.progressBar)
                 countDownRunnable.setElapsed(expiryAlertPair.first, expiryAlertPair.second)
                 recyclerHandler.postDelayed(countDownRunnable, ONE_SECOND)
             } else {

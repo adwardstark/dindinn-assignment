@@ -16,9 +16,9 @@
         }
       ],
       "quantity": 1,
-      "created_at": "2021-09-09T16:00Z",
-      "alerted_at": "2021-09-09T17:41Z",
-      "expired_at": "2021-09-09T17:44Z"
+      "created_at": "2021-09-10T16:00Z",
+      "alerted_at": "2021-09-11T14:51Z",
+      "expired_at": "2021-09-11T14:59Z"
     },
     {
       "id": 11,
@@ -37,38 +37,8 @@
       ],
       "quantity": 1,
       "created_at": "2021-09-09T16:00Z",
-      "alerted_at": "2021-09-09T17:42Z",
-      "expired_at": "2021-09-09T17:45Z"
-    },
-    {
-      "id": 12,
-      "title": "Hakka noddles",
-      "addon": [
-        {
-          "id": 21,
-          "title": "Fried Egg",
-          "quantity": 3
-        }
-      ],
-      "quantity": 1,
-      "created_at": "2021-06-10T15:00Z",
-      "alerted_at": "2021-06-10T15:03Z",
-      "expired_at": "2021-06-10T15:05Z"
-    },
-    {
-      "id": 13,
-      "title": "Momo",
-      "addon": [
-        {
-          "id": 21,
-          "title": "Fried Egg",
-          "quantity": 3
-        }
-      ],
-      "quantity": 1,
-      "created_at": "2021-06-10T15:00Z",
-      "alerted_at": "2021-06-10T15:03Z",
-      "expired_at": "2021-06-10T15:05Z"
+      "alerted_at": "2021-09-11T14:47Z",
+      "expired_at": "2021-09-11T14:35Z"
     }
   ]
 }
