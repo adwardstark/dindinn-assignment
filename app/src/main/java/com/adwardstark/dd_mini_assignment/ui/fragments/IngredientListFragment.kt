@@ -1,8 +1,10 @@
 package com.adwardstark.dd_mini_assignment.ui.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.cardview.widget.CardView
 import androidx.core.view.get
@@ -10,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adwardstark.dd_mini_assignment.R
 import com.adwardstark.dd_mini_assignment.data.IngredientCategory
@@ -78,20 +79,15 @@ class IngredientListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_view_menu, menu)
-        val searchItem = menu.findItem(R.id.action_search)
-        val searchView = (searchItem.actionView as CardView)[0] as SearchView
+        val searchItem = menu.findItem(R.id.action_search).actionView as LinearLayout
+        val searchView = (searchItem[0] as CardView)[0] as SearchView
         searchView.setOnQueryTextListener(onSearchQueryTextListener)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinder.rvIngredientList.apply {
-            layoutManager = GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
-            adapter = ingredientListAdapter
-            itemAnimator = DefaultItemAnimator()
-        }
-
+        setupRecyclerView()
         orderServiceViewModel.ingredientList.observe(viewLifecycleOwner) { listOfIngredients ->
             if(listOfIngredients.isNotEmpty()) {
                 ingredientCategoryList.clear()
@@ -111,5 +107,22 @@ class IngredientListFragment : Fragment() {
         tabTitles.forEach { title ->
             viewBinder.tabLayout.addTab(viewBinder.tabLayout.newTab().setText(title))
         }
+    }
+
+    private fun setupRecyclerView(isPortrait: Boolean = true) {
+        viewBinder.rvIngredientList.apply {
+            layoutManager = if(isPortrait) {
+                GridLayoutManager(this.context, 2, RecyclerView.VERTICAL, false)
+            } else {
+                GridLayoutManager(this.context, 4, RecyclerView.VERTICAL, false)
+            }
+            adapter = ingredientListAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        setupRecyclerView(newConfig.orientation != Configuration.ORIENTATION_LANDSCAPE)
     }
 }

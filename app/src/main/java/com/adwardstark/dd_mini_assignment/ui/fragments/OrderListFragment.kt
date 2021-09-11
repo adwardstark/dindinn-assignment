@@ -1,5 +1,6 @@
 package com.adwardstark.dd_mini_assignment.ui.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -43,13 +44,8 @@ class OrderListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
         viewBinder.swipeRefreshLayout.isRefreshing = true
-        viewBinder.rvOrderList.apply {
-            layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
-            adapter = orderListAdapter
-            itemAnimator = DefaultItemAnimator()
-        }
-
         viewBinder.swipeRefreshLayout.setOnRefreshListener {
             orderServiceViewModel.getOrders()
         }
@@ -67,6 +63,24 @@ class OrderListFragment : Fragment() {
             }
         }
         orderServiceViewModel.getOrders()
+    }
+
+    private fun setupRecyclerView() {
+        viewBinder.rvOrderList.apply {
+            layoutManager = if(orderListAdapter.isPortrait) {
+                LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+            } else {
+                LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+            }
+            adapter = orderListAdapter
+            itemAnimator = DefaultItemAnimator()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        orderListAdapter.isPortrait = newConfig.orientation != Configuration.ORIENTATION_LANDSCAPE
+        setupRecyclerView()
     }
 
     override fun onPause() {
